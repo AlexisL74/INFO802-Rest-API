@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Carte OSM avec Leaflet</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/map.css" />
+  <link rel="stylesheet" href="css/cars.css" />
+  
+</head>
+<body>
+    <div id="map"></div>
+    <div id="trajet">
+      <div id="trajet-bar">
+        <input type="text" id="startPoint" placeholder="Départ" />
+        <input type="text" id="destinationPoint" placeholder="Arrivée" />
+        <button id="calcRoute">Calc</button>
+        <button id="clearRoute">Clear</button>
+      </div>
+      <div id="trajet-details">
+        <div id="trajet-distance">
+          <span>Distance : </span>
+          <span id="trajet-distance-value">0</span>
+          <span id="trajet-distance-unit">km</span>
+        </div>
+        <div id="trajet-duration">
+          <span>Temps : </span>
+          <span id="trajet-duration-value">0</span>
+          <span id="trajet-duration-unit">h</span>
+        </div>
+        <div id="trajet-price">
+          <span>Prix : </span>
+          <span id="trajet-price-value">0</span>
+          <span id="trajet-price-unit">€</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="carsList"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+    <script src="https://unpkg.com/@mapbox/polyline"></script>
+    <script src="scripts/leaflet-color-markers.js" defer></script>
+    <script src="scripts/Polyline.encoded.js" defer></script>
+    <script src="scripts/mapUtils.js" defer></script>
+    <script src="scripts/carsUtils.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Carte OSM personnalisée</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    #map {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    #map > img {
+        border: 2px solid #ff0000;
+        position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    const tileSize = 256; // Taille de chaque tuile (256x256 pixels)
+    const mapDiv = document.getElementById("map");
+
+    // Initialiser les paramètres de la carte
+    const centerLat = 45.64; // Latitude de Paris
+    const centerLon = 5.88; // Longitude de Paris
+    const zoom = 16; // Niveau de zoom initial
+
+    // Convertir latitude/longitude en coordonnées tuiles
+    function lonToTileX(lon, zoom) {
+      return Math.floor(((lon + 180) / 360) * Math.pow(2, zoom));
+    }
+    function latToTileY(lat, zoom) {
+      const rad = (lat * Math.PI) / 180;
+      return Math.floor(
+        ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * Math.pow(2, zoom)
+      );
+    }
+
+    // Charger les tuiles visibles
+    function loadTiles(centerLat, centerLon, zoom) {
+      const centerX = lonToTileX(centerLon, zoom);
+      const centerY = latToTileY(centerLat, zoom);
+
+      const startX = centerX - 1;
+      const endX = centerX + 1;
+      const startY = centerY - 1;
+      const endY = centerY + 1;
+
+      let nbTiles = 0;
+
+      for (let x = startX; x <= endX; x++) {
+        for (let y = startY; y <= endY; y++) {
+            nbTiles++;
+            const img = document.createElement("img");
+            img.src = `https://a.tile.openstreetmap.org/${zoom}/${x}/${y}.png`;
+            img.style.position = "absolute";
+            img.style.width = `${tileSize}px`;
+            img.style.height = `${tileSize}px`;
+            img.style.left = `${(x - startX) * tileSize}px`;
+            img.style.top = `${(y - startY) * tileSize}px`;
+            mapDiv.appendChild(img);
+        }
+      }
+      console.log(`Nombre de tuiles chargées : ${nbTiles}`);
+    }
+
+    // Charger les tuiles initiales
+    loadTiles(centerLat, centerLon, zoom);
+    
+  </script>
+</body>
+</html>
