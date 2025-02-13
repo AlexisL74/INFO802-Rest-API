@@ -7,7 +7,7 @@ const zoom = 13;
 const trajet = L.layerGroup();
 trajet
 
-const my_api_url = 'https://info802rest-f4fdhuheexacgzbs.francecentral-01.azurewebsites.net';
+const my_api_url = 'https://info802rest-f4fdhuheexacgzbs.francecentral-01.azurewebsites.net/api';
 
 
 const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
