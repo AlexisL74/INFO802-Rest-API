@@ -3,18 +3,17 @@ from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
 import lxml
 
-
 class CalcServices(ServiceBase):
     @rpc(Integer, Integer, Integer, _returns=Float)
-    def calcTemp(ctx, distance, rechargeTime, autonomy):        
-        velocity = 80/3.6
+    def calcTemp(ctx, distance, rechargeTime, autonomy):
+        velocity = 80 / 3.6
         res = distance / velocity
 
         nbRecharge = distance // autonomy
         res += nbRecharge * rechargeTime
 
         return res
-    
+
     @rpc(Integer, _returns=Float)
     def calcPrice(ctx, distance):
         cost_of_electricity = 0.15
@@ -27,8 +26,5 @@ class CalcServices(ServiceBase):
 application = Application([CalcServices], 'spyne.examples.hello.soap',
     in_protocol=Soap11(validator='lxml'),
     out_protocol=Soap11())
-wsgi_application = WsgiApplication(application)
 
-from wsgiref.simple_server import make_server
-server = make_server('127.0.0.1', 8000, wsgi_application)
-server.serve_forever()
+wsgi_application = WsgiApplication(application)

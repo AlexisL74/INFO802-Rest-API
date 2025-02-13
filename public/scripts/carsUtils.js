@@ -28,7 +28,7 @@ function carCard(car){
 
 function init_carsList(carsList, carsSelect) {
     if(carsList){
-        fetch('http://localhost:3000/api/getCarsList', {
+        fetch(my_api_url+'/getCarsList', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         })
