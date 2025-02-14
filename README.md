@@ -96,7 +96,7 @@ Cette dernière est accessible ici: [https://info802rest-f4fdhuheexacgzbs.france
 Ce service SOAP est conçu pour effectuer des calculs spécifiques liés aux véhicules électriques. Il permet de déterminer le temps nécessaire pour effectuer un trajet en tenant compte des recharges, ainsi que le coût de la recharge en fonction de la distance parcourue.<br>
 Ce dernier est accessible ici: [https://info802soap-e2aebkf9hgaag9f2.francecentral-01.azurewebsites.net/](https://info802soap-e2aebkf9hgaag9f2.francecentral-01.azurewebsites.net/)
 ### Méthodes
-#### Calculate Temperature (calcTemp)
+#### Calculate Temps (calcTemp)
 
     Méthode: calcTemp
     Description: Calcule le temps total nécessaire pour effectuer un trajet, en tenant compte des recharges.
